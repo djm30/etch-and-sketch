@@ -5,8 +5,8 @@ const colorInput = document.querySelector("#color");
 const colorShower = document.querySelector(".color-picker");
 
 const checkboxInput = document.querySelector("#show-grid");
-const checkboxShow = document.querySelector(".check");
-const checkboxTick = document.querySelector(".tick");
+const checkboxShow = document.querySelector(".check-grid");
+const checkboxTick = document.querySelector(".tick-grid");
 
 const sizeDownBtn = document.querySelector(".minus");
 const sizeUpBtn = document.querySelector(".plus");
@@ -16,6 +16,10 @@ const penButton = document.querySelector(".pen");
 const rubberButton = document.querySelector(".rubber");
 const resetButton = document.querySelector(".reset");
 
+const rainbowInput = document.querySelector("#rainbow");
+const rainbowCheckBox = document.querySelector(".check-rainbow");
+const rainbowTick = document.querySelector(".tick-rainbow");
+
 // VARIABLES
 let mouseDown = false;
 let penColor = "";
@@ -23,6 +27,20 @@ let currPenColor = "#bbb";
 let rubberColor = "#fff";
 let erasing = false;
 let borderOn = false;
+let randomColor = false;
+
+const getRandomNumber = () => Math.floor(Math.random() * 256);
+const getRandomColor = () =>
+    `rgb(${getRandomNumber()},${getRandomNumber()},${getRandomNumber()})`;
+const getCorrectPenColor = () => {
+    if (erasing) {
+        return rubberColor;
+    }
+    if (randomColor) {
+        return getRandomColor();
+    }
+    return currPenColor;
+};
 
 // REPRESENTS GRID SIZE, DEFUALT 16X16
 let dimensionChoices = [3, 4, 8, 9, 16, 32, 64];
@@ -46,12 +64,12 @@ const generateGrid = () => {
         pixel.classList.add("pixel");
         if (borderOn) pixel.classList.add("pixel-grid");
         pixel.addEventListener("mousedown", (e) => {
-            penColor = erasing ? rubberColor : currPenColor;
+            penColor = getCorrectPenColor();
             pixel.style.backgroundColor = penColor;
         });
 
         pixel.addEventListener("mouseenter", (e) => {
-            penColor = erasing ? rubberColor : currPenColor;
+            penColor = getCorrectPenColor();
             if (mouseDown) pixel.style.backgroundColor = penColor;
         });
         canvas.appendChild(pixel);
@@ -70,6 +88,7 @@ colorInput.addEventListener("input", (e) => {
     colorShower.style.setProperty("background-color", e.target.value);
 });
 
+// TOGGLES GRID
 checkboxInput.addEventListener("change", (e) => {
     borderOn = !borderOn;
     checkboxShow.classList.toggle("check-active");
@@ -77,6 +96,13 @@ checkboxInput.addEventListener("change", (e) => {
     canvas.childNodes.forEach((pixel) => {
         pixel.classList.toggle("pixel-grid");
     });
+});
+
+// TOGGLES RAINBOW
+rainbowInput.addEventListener("change", () => {
+    randomColor = !randomColor;
+    rainbowCheckBox.classList.toggle("check-active");
+    rainbowTick.classList.toggle("hide");
 });
 
 const adjustGridSize = (increment) => {

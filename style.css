@@ -181,8 +181,7 @@ h2{
 
 
 .left{
-    justify-content: start;
-    padding-top: 24px;
+    justify-content: center;
     gap: 25px;
 }
 
@@ -218,7 +217,7 @@ h2{
     gap: 32px;
 }
 
-#show-grid{
+#show-grid, #rainbow{
     opacity: 0;
     position: absolute;
 }
@@ -250,4 +249,9 @@ h2{
 
 svg{
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(49deg) brightness(103%) contrast(103%);
+}
+
+.rainbow{
+    margin-right: 4px;
+    gap: 2px;
 }
