@@ -15,7 +15,7 @@ body{
 
 .heading h1{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 48px;
 }
 
@@ -53,6 +53,7 @@ body{
 
 
 .canvas{
+    cursor: crosshair;
     background-color: white;
     height: 900px;
     width: 900px;
@@ -66,14 +67,153 @@ body{
 
 }
 
+.pixel{
+    box-sizing: border-box;   
+}
+
+.pixel-grid{
+    border: 1px solid black;
+}
+
 .control-bar{
     width: 1000px;
-    height: 200px;
+    height: 240px;
     background-color: #343434;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.pixel{
+h2{
+    color: white;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.controls{
+    height: 160px;
+    margin: 0px 100px;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.right, .left, .center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center{
+    margin-top: 20px;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: start;
+    align-items: center;
+    font-size: 24px;
+    gap: 30px;
+
+}
+
+
+.size-selector{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.square-button{
+    background-color: #02A9EA;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 20px;
+    user-select: none;
+}
+
+.square-button:hover{
+    background-color: #3abdf1;
+}
+
+.right{
+    justify-content: start;
+    gap: 20px;
     box-sizing: border-box;
-    border: 1px solid black;
+}
+
+.button{
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 2px;
+    padding: 10px 26px;
+    transition: all 250ms;
+    cursor: pointer;
+}
+
+
+
+.button:hover, .active{
+    background-color: white;
+    color: #343434;
+    border: 2px solid #02A9EA;
+}
+
+
+
+.reset:hover{
+    border-color: #c40000;
+    color: white;
+    background-color: #ED254E;
+}
+
+
+.left{
+    justify-content: start;
+    padding-top: 24px;
+    gap: 25px;
+}
+
+.color-holder{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-picker{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #bbb;
+    border-radius: 2px;
+}
+
+#color{
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+#show-grid{
+    opacity: 0;
+    position: absolute;
+}
+
+.check{
+    background-color: #F9F9F9;
+    width: 32px;
+    height: 32px;
 }

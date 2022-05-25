@@ -20,7 +20,43 @@
         </header>
         <section class="main-content">
             <div class="canvas grid"></div>
-            <div class="control-bar"></div>
+            <div class="control-bar">
+                <h2>Control Bar</h2>
+                <div class="controls">
+                    <div class="left">
+                        <label class="color-holder" for="color"
+                            >Choose Color
+                            <input type="color" name="color" id="color" />
+                            <div class="color-picker"></div>
+                        </label>
+
+                        <label for="show-grid" class="checkbox"
+                            >Show Grid
+                            <input
+                                type="checkbox"
+                                name="show-grid"
+                                id="show-grid"
+                            />
+                            <div class="check"></div>
+                        </label>
+                    </div>
+                    <div class="center">
+                        <p>Grid Size</p>
+                        <div class="size-selector">
+                            <div class="square-button minus">-</div>
+                            <div>16x16</div>
+                            <div class="square-button plus">+</div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="button">
+                            &nbsp;&nbsp;Pen&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="button">Rubber</div>
+                        <div class="button reset">&nbsp;Reset&nbsp;</div>
+                    </div>
+                </div>
+            </div>
         </section>
         <footer class="footer">
             <p>

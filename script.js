@@ -1,3 +1,4 @@
+// DOM ELEMENTS
 const canvas = document.querySelector(".canvas");
 let root = document.documentElement;
 
@@ -5,11 +6,9 @@ let mouseDown = false;
 let penColor = "#bbb";
 
 // REPRESENTS GRID SIZE, DEFUALT 16X16
-let dimensions = 16;
+let dimensions = 8;
 // SETTING GRID DIMENSIONS
 canvas.style.setProperty("grid-template-columns", `repeat(${dimensions}, 1fr)`);
-
-let pixels = [];
 
 const generateGrid = () => {
     for (let i = 0; i < dimensions ** 2; i++) {
@@ -22,18 +21,11 @@ const generateGrid = () => {
         pixel.addEventListener("mouseenter", (e) => {
             if (mouseDown) pixel.style.backgroundColor = penColor;
         });
-        pixels.push(pixel);
+        canvas.appendChild(pixel);
     }
 };
 
-const attachGrid = () => {
-    pixels.forEach((pixel) => {
-        canvas.appendChild(pixel);
-    });
-};
-
 const clearGrid = () => {
-    pixels = [];
     canvas.children.array.forEach((child) => {
         console.log(child);
         // canvas.removeChild(child);
@@ -42,7 +34,6 @@ const clearGrid = () => {
 
 // RUNS WHEN PAGE LOADS TO INITIATE GRID
 generateGrid();
-attachGrid();
 
 document.addEventListener("mousedown", () => (mouseDown = true));
 document.addEventListener("mouseup", () => (mouseDown = false));
