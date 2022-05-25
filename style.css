@@ -4,9 +4,6 @@
     /* box-sizing: border-box; */
 }
 
-:root{
-    --grid-columns: 0px
-}
 
 body{
     font-family: 'BIZ UDPGothic', sans-serif;
@@ -51,6 +48,12 @@ body{
     border-bottom: 2px solid white;
 }
 
+.footer p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 
 .canvas{
     cursor: crosshair;
@@ -68,7 +71,8 @@ body{
 }
 
 .pixel{
-    box-sizing: border-box;   
+    box-sizing: border-box; 
+    user-select: none;  
 }
 
 .pixel-grid{
@@ -113,6 +117,10 @@ h2{
 
 }
 
+.size-show{
+    user-select: none;
+}
+
 
 .size-selector{
     display: flex;
@@ -151,11 +159,13 @@ h2{
     padding: 10px 26px;
     transition: all 250ms;
     cursor: pointer;
+    user-select: none;
 }
 
 
 
 .button:hover, .active{
+    font-weight: bold;
     background-color: white;
     color: #343434;
     border: 2px solid #02A9EA;
@@ -183,6 +193,7 @@ h2{
     justify-content: center;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .color-picker{
@@ -204,7 +215,7 @@ h2{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
 }
 
 #show-grid{
@@ -212,8 +223,31 @@ h2{
     position: absolute;
 }
 
+.checkbox{
+    cursor: pointer;
+}
+
 .check{
     background-color: #F9F9F9;
     width: 32px;
     height: 32px;
+    border: 1px solid rgb(153, 152, 152);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+.check-active{
+    background-color: #02A9EA;
+}
+
+.hide{
+    display: none;
+}
+
+svg{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(49deg) brightness(103%) contrast(103%);
 }
